@@ -30,7 +30,7 @@ services:
       - /app/obj
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=f21_postgres;Database=f21_database;Username=f21_sgcan;Password=f21_sgcan123456
+      - ConnectionStrings__DefaultConnection=Host=f21_postgres;Database=f1_database;Username=f1_sgcan;Password=f1_sgcan123456
     depends_on:
       - postgres
     networks:
@@ -50,6 +50,21 @@ services:
       - redis
     networks:
       - f21_network
+
+  scraper_worker:
+    container_name: f21_scraper_worker
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile
+    command: sh -c "PYTHONPATH=/app python src/jobs/worker.py"
+    volumes:
+      - ./scraper:/app
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - f21_network
+
 
   postgres:
     image: postgres:14

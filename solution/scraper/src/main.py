@@ -1,11 +1,25 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks, HTTPException
+from sqlalchemy import select
 
-app = FastAPI()
+from src.db import SessionLocal
+from src.models import CsvFile
+from src.jobs.csv_processor import process_csv_job
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, FastAPI with Docker!"}
+app = FastAPI(title="SGCAN Scraper")
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/health")
+def health():
+    return {"ok": True}
+
+@app.post("/process/{csv_id}")
+def process_csv(csv_id: int, background: BackgroundTasks):
+    with SessionLocal() as db:
+        exists = db.execute(
+            select(CsvFile.Id).where(CsvFile.Id == csv_id)
+        ).scalar_one_or_none()
+
+    if not exists:
+        raise HTTPException(status_code=404, detail="CSV no encontrado")
+
+    background.add_task(process_csv_job, csv_id)
+    return {"message": f"CSV {csv_id} encolado para procesamiento"}
