@@ -4,49 +4,49 @@
 
 ### Consigna 1
 
-Se crearon los archivos de modelo para la base de datos:
-  Models/CsvFile.cs
-  Models/Documento.cs
-Se creó el DTO para adaptar las columnas del CSV al modelo de la base de datos
-  DTO/DocumentoCsvMap.cs
-Se creó el archivo de contexto de migración
-  Data/AppDbContext.cs
-Se creó el controlador que gestiona la subida de archivos CSV
-  Controllers/ArchivoController.cs
+-Se crearon los archivos de modelo para la base de datos:
+  -Models/CsvFile.cs
+  -Models/Documento.cs
+-Se creó el DTO para adaptar las columnas del CSV al modelo de la base de datos
+  -DTO/DocumentoCsvMap.cs
+-Se creó el archivo de contexto de migración
+  -Data/AppDbContext.cs
+-Se creó el controlador que gestiona la subida de archivos CSV
+  -Controllers/ArchivoController.cs
 
 ### Consigna 2
 
-Se creó el archivo de conexión a la BD 
-  db.py
-Se creó el archivo de modelos
-  models.py
-Se creó el extractor de texto
-  extractor_texto.py
-Se creó el archivo de tarea para procesar los enlaces
-  jobs/csv_processor.py
-Se crearon las rutas del servicio en
-  main.py
-Se crearon archivos de pruebas de conexión y extracción de texto 
-  test_db.py
-  test_extractor_texto.py
-Se optó por un servicio adicional que de forma automática cada x minutos actualice los CSV sin intervención del usuario con estado QUEUED
-  jobs/worker.py
+-Se creó el archivo de conexión a la BD 
+  -db.py
+-Se creó el archivo de modelos
+  -models.py
+-Se creó el extractor de texto
+  -extractor_texto.py
+-Se creó el archivo de tarea para procesar los enlaces
+  -jobs/csv_processor.py
+-Se crearon las rutas del servicio en
+  -main.py
+-Se crearon archivos de pruebas de conexión y extracción de texto 
+  -test_db.py
+  -test_extractor_texto.py
+-Se optó por un servicio adicional que de forma automática cada x minutos actualice los CSV sin intervención del usuario con estado QUEUED
+  -jobs/worker.py
 
 ### Consigna 3
 
-De forma opcional se creo la carpeta notifications en el scraper. Dentro se crearon los archivos
-  notificacion.py
-  test_notificacion.py
+-De forma opcional se creo la carpeta notifications en el scraper. Dentro se crearon los archivos
+  -notificacion.py
+  -test_notificacion.py
 
 ### Consigna 4
 
-Se utilizó parte de la plantilla otorgada para la prueba. 
-Se crearon los directorios de trabajo
-  app/prueba
-  components/prueba
-Se creo un .env con variables de entorno
-Se creo un acceso a MailHog para verificar el envio de notificaciones
-Url de acceso 127.0.0.1:9999
+-Se utilizó parte de la plantilla otorgada para la prueba. 
+-Se crearon los directorios de trabajo
+  -app/prueba
+  -components/prueba
+-Se creo un .env con variables de entorno
+-Se creo un acceso a MailHog para verificar el envio de notificaciones
+-Url de acceso 127.0.0.1:9999
 
 ## A. Descripción de la Prueba
 
